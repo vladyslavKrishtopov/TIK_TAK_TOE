@@ -1,2 +1,3 @@
+Commands to run
 g++ -Wall -c tik_tak_toe.cpp -o tik_tak_toe.o
 g++ -Wall game.cpp tik_tak_toe.o -o game
