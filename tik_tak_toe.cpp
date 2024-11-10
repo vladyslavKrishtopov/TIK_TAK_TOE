@@ -28,7 +28,7 @@ bool Game::isEmpty(int row, int column){
 
 bool Game::makeMove(int row, int column, Player player){
 	bool moveDone = false;
-	if(row < GRID_SIZE && column < GRID_SIZE && isEmpty(row, column)){
+	if(row < GRID_SIZE && column < GRID_SIZE && row >=0 && column >= 0 && isEmpty(row, column)){
 		field[row][column] = player;
 		moveDone = true;
 	}
