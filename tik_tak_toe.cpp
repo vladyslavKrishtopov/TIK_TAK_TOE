@@ -28,13 +28,14 @@ bool Game::isEmpty(int row, int column){
 
 bool Game::makeMove(int row, int column, Player player){
 	bool moveDone = false;
-	if(row < GRID_SIZE && column < GRID_SIZE && row >=0 && column >= 0 && isEmpty(row, column)){
+	if(isEmpty(row, column)){
 		field[row][column] = player;
 		moveDone = true;
 	}
 	return moveDone;
 }
 
+int Game::getSize(){ return GRID_SIZE; }
 
 bool Game::playerWon(Player player){
 	bool result;

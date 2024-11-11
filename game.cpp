@@ -4,22 +4,30 @@
 int main(){
     std::cout << "Game started!\n";
     Game game = Game();
-    Player player = cross;
+    Game::Player player = Game::cross;
     while(!game.gameOver()){
         game.printField();
         std::cout << "Player [" << (char)player << "] make move\n";
         int row, column;
-        std::cout << "Enter row: ";
-        std::cin >> row;
-        std::cout << "Enter column: ";
-        std::cin >> column;
-        if(game.makeMove(row, column, player)){
+        do{
+            if(!std::cin){
+                std::cin.clear();
+                std::cin.ignore(40,'\n');
+            }
+	        std::cout << "Enter row: ";
+            std::cin >> row;
+            if(std::cin){
+                std::cout << "Enter column: ";
+                std::cin >> column;
+            }
+	    } while (!std::cin && row > -1 && column > -1 && row < game.getSize() && column < game.getSize());
+	if(game.makeMove(row, column, player)){
             if(game.playerWon(player)){
                 std::cout << "Player [" << (char)player << "] won!!!\n";
             } else if (!game.emptySpotsLeft()){
                 std::cout << "Game Ended With a Draw!!!\n";
             }
-            player = player==cross ? circle : cross;
+            player = player == Game::cross ? Game::circle : Game::cross;
         }
     }
 
